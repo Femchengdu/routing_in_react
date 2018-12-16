@@ -15,7 +15,14 @@ class Blog extends Component {
             .then(
                 // Call setState inside the then methond becase the call to the server is asynchronous
                 response => {
-                    this.setState({posts: response.data})
+                    const samplePosts = response.data.slice(0, 8);
+                    const transPosts = samplePosts.map(transPost => {
+                        return {
+                            ...transPost,
+                            author: 'Ajayi'
+                        }
+                    }); 
+                    this.setState({posts: transPosts})
                     //console.log(response);
                 }
             );  
@@ -23,7 +30,7 @@ class Blog extends Component {
     
     render () {
         const postData = this.state.posts.map( singlePost => {
-            return <Post key={singlePost.id} title={singlePost.title} />
+            return <Post key={singlePost.id} title={singlePost.title} author={singlePost.author}/>
         }
         );
         return (
