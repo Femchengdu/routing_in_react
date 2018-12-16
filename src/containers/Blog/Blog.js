@@ -8,8 +8,10 @@ import axios from 'axios';
 
 class Blog extends Component {
     state = {
-        posts: []
+        posts: [],
+        clickedPostId: null
     }
+
     componentDidMount () {
         axios.get('https://jsonplaceholder.typicode.com/posts')
             .then(
@@ -27,10 +29,19 @@ class Blog extends Component {
                 }
             );  
     }
+
+    GetPostId = (id) => {
+        this.setState({clickedPostId: id});
+    }
     
     render () {
         const postData = this.state.posts.map( singlePost => {
-            return <Post key={singlePost.id} title={singlePost.title} author={singlePost.author}/>
+            return <Post 
+                key={singlePost.id} 
+                title={singlePost.title} 
+                author={singlePost.author}
+                // Why use the anonymous function here?
+                postId={() => this.GetPostId(singlePost.id)}/>
         }
         );
         return (
@@ -39,7 +50,7 @@ class Blog extends Component {
                     {postData}
                 </section>
                 <section>
-                    <FullPost />
+                    <FullPost id={this.state.clickedPostId}/>
                 </section>
                 <section>
                     <NewPost />
