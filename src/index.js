@@ -5,6 +5,13 @@ import App from './App';
 import axios from 'axios';
 import * as serviceWorker from './serviceWorker';
 
+/*
+Getting rid of interceptors is also easy. 
+Simply store the reference to the interceptor in a variable.
+Then call eject  with that reference as an argument.
+More info at  https://github.com/axios/axios#interceptors
+*/
+
 axios.interceptors.request.use(request => {
 	console.log(request);
 	// Always return the request, you can also edit it before returning it.
