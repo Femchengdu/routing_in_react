@@ -14,7 +14,7 @@ class Blog extends Component {
     }
 
     componentDidMount () {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
+        axios.get('/posts')
             .then(
                 // Call setState inside the then methond becase the call to the server is asynchronous
                 response => {

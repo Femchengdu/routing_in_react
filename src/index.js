@@ -8,9 +8,13 @@ import * as serviceWorker from './serviceWorker';
 /*
 Getting rid of interceptors is also easy. 
 Simply store the reference to the interceptor in a variable.
-Then call eject  with that reference as an argument.
+Then call eject with that reference as an argument.
 More info at  https://github.com/axios/axios#interceptors
 */
+
+axios.defaults.baseURL = 'https://jsonplaceholder.typicode.com';
+axios.defaults.headers.common['Dev'] = 'FAN MIAO';
+axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 axios.interceptors.request.use(request => {
 	console.log(request);
