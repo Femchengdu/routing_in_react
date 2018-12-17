@@ -9,7 +9,8 @@ import axios from 'axios';
 class Blog extends Component {
     state = {
         posts: [],
-        clickedPostId: null
+        clickedPostId: null,
+        getError: false
     }
 
     componentDidMount () {
@@ -27,7 +28,11 @@ class Blog extends Component {
                     this.setState({posts: transPosts})
                     //console.log(response);
                 }
-            );  
+            )
+            .catch(error => {
+                //console.log(error);
+                this.setState({getError: true});
+            });  
     }
 
     GetPostId = (id) => {
@@ -35,15 +40,26 @@ class Blog extends Component {
     }
     
     render () {
-        const postData = this.state.posts.map( singlePost => {
-            return <Post 
-                key={singlePost.id} 
-                title={singlePost.title} 
-                author={singlePost.author}
-                // Why use the anonymous function here?
-                postId={() => this.GetPostId(singlePost.id)}/>
+        let postData = <p style={{textAlign: 'center'}}>Sorry, a request error prevented me from downloading the posts from the server</p>
+        if (!this.state.getError) {
+            postData = this.state.posts.map( singlePost => {
+                return <Post 
+                    key={singlePost.id} 
+                    title={singlePost.title} 
+                    author={singlePost.author}
+                    // Why use the anonymous function here?
+                    postId={() => this.GetPostId(singlePost.id)}/>
+            });
         }
-        );
+        // const postData = this.state.posts.map( singlePost => {
+        //     return <Post 
+        //         key={singlePost.id} 
+        //         title={singlePost.title} 
+        //         author={singlePost.author}
+        //         // Why use the anonymous function here?
+        //         postId={() => this.GetPostId(singlePost.id)}/>
+        // }
+        // );
         return (
             <div>
                 <section className="Posts">
