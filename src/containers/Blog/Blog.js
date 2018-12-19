@@ -4,6 +4,8 @@ import './Blog.css';
 
 import Posts from './Posts/Posts';
 
+import NewPost from './NewPost/NewPost';
+
 import {Route} from 'react-router-dom';
 
 //import axios from 'axios';
@@ -37,6 +39,7 @@ class Blog extends Component {
                 {/* <Route path='/' exact render={() => <Posts />} /> */}
                 {/* This component is a a class or function we have defined */}
                 <Route path='/' exact component={Posts} />
+		<Route path='/new_post' exact component={NewPost} />
             </div>
         );
     }
