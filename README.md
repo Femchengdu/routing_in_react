@@ -2,4 +2,4 @@
 
 ### `Project aims`
 
-In this project, I practice using the router package library to parse the url paths	to create the feeling of a multipage application.
+In this project, I practice using the router-router and react-router-dom libraries to parse the url paths to create the feeling of a multipage application.
