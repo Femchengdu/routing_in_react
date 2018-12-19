@@ -6,7 +6,7 @@ import Posts from './Posts/Posts';
 
 import NewPost from './NewPost/NewPost';
 
-import {Route} from 'react-router-dom';
+import {Route, Link} from 'react-router-dom';
 
 //import axios from 'axios';
 
@@ -31,8 +31,8 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><a href='/'>Home</a> </li>
-                            <li><a href='/new_post'>New Post</a> </li>
+                            <li><Link to='/'>Home</Link> </li>
+                            <li><Link to={{ pathname: '/new_post' }}>New Post</Link> </li>
                         </ul>
                     </nav>
                 </header>
