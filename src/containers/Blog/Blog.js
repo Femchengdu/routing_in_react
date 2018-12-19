@@ -4,6 +4,8 @@ import './Blog.css';
 
 import Posts from './Posts/Posts';
 
+import {Route} from 'react-router-dom';
+
 //import axios from 'axios';
 
 class Blog extends Component {
@@ -32,7 +34,9 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                <Posts />
+                {/* <Route path='/' exact render={() => <Posts />} /> */}
+                {/* This component is a a class or function we have defined */}
+                <Route path='/' exact component={Posts} />
             </div>
         );
     }
