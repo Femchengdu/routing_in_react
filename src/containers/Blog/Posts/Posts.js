@@ -34,7 +34,11 @@ class Posts extends Component {
     }
 
     GetPostId = (id) => {
-        this.setState({clickedPostId: id});
+        //this.setState({clickedPostId: id});
+        // Use this method to set the route programatically
+        /*
+        this.props.history.push('/post/' + id);
+        */
     }
 
 

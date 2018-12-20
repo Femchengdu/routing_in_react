@@ -38,8 +38,8 @@ class Blog extends Component {
                         </ul>
                     </nav>
                 </header>
-                {/* <Route path='/' exact render={() => <Posts />} /> */}
-                {/* This component is a a class or function we have defined */}
+                {/* <Route path='/' exact render={() => <Posts />} /> }
+                 The component part of the route is a class or function we have defined */}
                 <Route path='/' exact component={Posts} />
                 <Route path='/new_post' exact component={NewPost} />
                 <Route path='/post/:id' exact component={FullPost} />
