@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Post from '../../../components/Post/Post';
-import './Posts.css'
+import './Posts.css';
+import {Link} from 'react-router-dom';
 
 class Posts extends Component {
 	state = {
@@ -42,13 +43,16 @@ class Posts extends Component {
 
         if (!this.state.getError) {
             postData = this.state.posts.map( singlePost => {
-                return <Post 
-                    key={singlePost.id} 
-                    title={singlePost.title} 
-                    author={singlePost.author}
-                    // Why use the anonymous function here?
-                    postId={() => this.GetPostId(singlePost.id)}/>
-            });
+                return (
+                    <Link to={'/post/' + singlePost.id} key={singlePost.id}>
+                        <Post  
+                            title={singlePost.title} 
+                            author={singlePost.author}
+                            // Why use the anonymous function here?
+                            postId={() => this.GetPostId(singlePost.id)}/>
+                    </Link> 
+                );
+            } );
         }
 
 		return (

@@ -8,6 +8,8 @@ import NewPost from './NewPost/NewPost';
 
 import {Route, NavLink} from 'react-router-dom';
 
+import FullPost from './FullPost/FullPost';
+
 //import axios from 'axios';
 
 class Blog extends Component {
@@ -39,7 +41,9 @@ class Blog extends Component {
                 {/* <Route path='/' exact render={() => <Posts />} /> */}
                 {/* This component is a a class or function we have defined */}
                 <Route path='/' exact component={Posts} />
-		<Route path='/new_post' exact component={NewPost} />
+                <Route path='/new_post' exact component={NewPost} />
+                <Route path='/post/:id' exact component={FullPost} />
+
             </div>
         );
     }
