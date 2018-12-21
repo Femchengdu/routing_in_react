@@ -2,14 +2,23 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './FullPost.css';
 
+
 class FullPost extends Component {
     state = {
         detailedPost: null
     }
     componentDidMount () {
-	console.log(this.props);
+	   console.log(this.props);
+       this.loadData(); 
+    }
+
+    componentDidUpdate () {
+        this.loadData();
+    }
+
+    loadData () {
         if (this.props.match.params.id) {
-            if (!this.state.detailedPost || (this.state.detailedPost && this.state.detailedPost.id !== this.props.id)) {
+            if (!this.state.detailedPost || (this.state.detailedPost && this.state.detailedPost.id !== +this.props.match.params.id)) {
                 axios.get('/posts/' + this.props.match.params.id)
                     .then(response => {
                         //console.log(response.data);
@@ -17,8 +26,8 @@ class FullPost extends Component {
                     }  );
             };
 
-            // if (this.state.detailedPost && this.state.detailedPost.id !== this.props.id) {
-            // axios.get('https://jsonplaceholder.typicode.com/posts/' + this.props.id)
+            // if (this.state.detailedPost && this.state.detailedPost.id !== this.props.match.params.id) {
+            // axios.get('https://jsonplaceholder.typicode.com/posts/' + this.props.match.params.id)
             //     .then(response => {
             //         //console.log(response.data);
             //         this.setState({detailedPost: response.data});
@@ -29,7 +38,7 @@ class FullPost extends Component {
     }
 
     deletePost = () => {
-        axios.delete('/posts/' + this.props.id)
+        axios.delete('/posts/' + this.props.match.params.id)
             .then(response => {
                 console.log(response);
             });
@@ -38,7 +47,7 @@ class FullPost extends Component {
     render () {
         let post = <p style={{textAlign: 'center'}}>Select a Post!</p>;
 
-        if (this.props.id) {
+        if (this.props.match.params.id) {
             post = <p style={{textAlign: 'center'}}>Loading.....</p>;
         }
 
