@@ -6,12 +6,12 @@ import Posts from './Posts/Posts';
 
 import NewPost from './NewPost/NewPost';
 
-import {Switch, Route, NavLink} from 'react-router-dom';
+import {Switch, Route, NavLink, Redirect} from 'react-router-dom';
 
 //import FullPost from './FullPost/FullPost';
 
 //import axios from 'axios';
-//.
+//..
 class Blog extends Component {
    
 
@@ -46,6 +46,7 @@ class Blog extends Component {
                     {/*
                         <Route path='/post/:id' exact component={FullPost} />
                     */}
+                    <Redirect from='/' to='/posts' />
                 </Switch>
                
 
