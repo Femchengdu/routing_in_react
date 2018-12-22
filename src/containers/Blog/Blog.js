@@ -11,7 +11,7 @@ import {Switch, Route, NavLink} from 'react-router-dom';
 //import FullPost from './FullPost/FullPost';
 
 //import axios from 'axios';
-
+//.
 class Blog extends Component {
    
 
@@ -33,7 +33,7 @@ class Blog extends Component {
                 <header>
                     <nav>
                         <ul>
-                            <li><NavLink to='/' exact>Home</NavLink> </li>
+                            <li><NavLink to='/posts' exact>Posts</NavLink> </li>
                             <li><NavLink to={{ pathname: '/new_post' }}>New Post</NavLink> </li>
                         </ul>
                     </nav>
@@ -42,7 +42,7 @@ class Blog extends Component {
                  The component part of the route is a class or function we have defined */}
                 <Switch>
                     <Route path='/new_post' exact component={NewPost} />
-                    <Route path='/' component={Posts} />
+                    <Route path='/posts'  component={Posts} />
                     {/*
                         <Route path='/post/:id' exact component={FullPost} />
                     */}

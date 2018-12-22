@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Post from '../../../components/Post/Post';
 import './Posts.css';
-import {Link} from 'react-router-dom';
+//import {Link} from 'react-router-dom';
 import {Route} from 'react-router-dom';
 import FullPost from '../FullPost/FullPost';
-
+//.
 class Posts extends Component {
 	state = {
         posts: [],
@@ -39,8 +39,9 @@ class Posts extends Component {
         //this.setState({clickedPostId: id});
         // Use this method to set the route programatically
         /*
-        this.props.history.push('/post/' + id);
+        this.props.history.push('/posts/' + id);
         */
+        this.props.history.push('/posts/' + id);
     }
 
 
@@ -50,13 +51,14 @@ class Posts extends Component {
         if (!this.state.getError) {
             postData = this.state.posts.map( singlePost => {
                 return (
-                    <Link to={'/post/' + singlePost.id} key={singlePost.id}>
+                 //   <Link to={'/posts/' + singlePost.id} key={singlePost.id}>
                         <Post  
                             title={singlePost.title} 
                             author={singlePost.author}
+			    key={singlePost.id}
                             // Why use the anonymous function here?
                             postId={() => this.GetPostId(singlePost.id)}/>
-                    </Link> 
+                 //   </Link> 
                 );
             } );
         }
@@ -66,7 +68,7 @@ class Posts extends Component {
                 <section className="Posts">
                     {postData}
                 </section>
-                <Route path='/post/:id' exact component={FullPost} />
+                <Route path={this.props.match.url + '/:id'} exact component={FullPost} />
             </div>
 		);
 	}
