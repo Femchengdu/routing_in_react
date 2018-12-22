@@ -4,9 +4,16 @@ import './Blog.css';
 
 import Posts from './Posts/Posts';
 
-import NewPost from './NewPost/NewPost';
+//import NewPost from './NewPost/NewPost';
+import asyncComp from '../../hoc/asyncComp';
+
 
 import {Switch, Route, NavLink, Redirect} from 'react-router-dom';
+
+const AsyncNewPost = asyncComp(() => {
+    // import called as a function is the dynamic import syntax
+    return import('./NewPost/NewPost');
+}); 
 
 //import FullPost from './FullPost/FullPost';
 
@@ -41,7 +48,7 @@ class Blog extends Component {
                 {/* <Route path='/' exact render={() => <Posts />} /> }
                  The component part of the route is a class or function we have defined */}
                 <Switch>
-                    <Route path='/new_post' exact component={NewPost} />
+                    <Route path='/new_post' exact component={AsyncNewPost} />
                     <Route path='/posts'  component={Posts} />
                     {/*
                         <Route path='/post/:id' exact component={FullPost} />
